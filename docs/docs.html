@@ -64,12 +64,24 @@
             <details open>
             <summary id="http_secure" class="h2">http_secure</summary>
                 <div>
+                    <h4>make_secure(sock:socket.socket, cert:path:str, privatekey_path:str, password:str=None) -> socket.socket, None</h4>
+                    <p>sock: socket to secure</p>
+                    <p>cert_path: path to full certificate chain</p>
+                    <p>privatekey_path: path to private key</p>
+                    <p>password: password used to decrypt privateky, will ask if not provided</p>
+                    <p class="desc"><i>Attempts to secure socket using highest supported version of TLS.</i></p>
+                    <p><i>returns: secured socket or None</i></p>
+
+                    <h4>ask_pasword() -> str</h4>
+                    <p class="desc"><i>This function is used as a callback for ssl.SSLContext.load_cert_chain if no password for the privatekey is provided but is required. It asks the user to input the password; do not call this function.</i></p>
+                    <p><i>returns: str</i></p>
                 </div>
             </details>
 
             <details open>
             <summary id="http_server" class="h2">http_server</summary>
                 <div>
+                    
                 </div>
             </details>
 
@@ -125,6 +137,19 @@
             <details open>
             <summary id="logger" class="h2">logger</summary>
                 <div>
+                    <h4>log(level:int, msg:str, pre:str='', named:str='', bypass:bool=False) -> None</h4>
+                    <p>level: verbosity level of message (0:error, 1:warning, 2:success, 3:info, 4:verbose, 5:very verbose, 6:debug)</p>
+                    <p>msg: message to log</p>
+                    <p>pre: prefix in front of entire message</p>
+                    <p>named: prefix before log level indicator; used to indicates origin of message</p>
+                    <p>bypass: if set to True message will even be logged if their log level is above the minimum required</p>
+                    <p class="desc"><i>Prints a log message with </i></p>
+                    <p><i>returns: None</i></p>
+
+                    <h4>create_log(name:str, color:str) -> function</h4>
+                    <p>name: name to register log</p>
+                    <p>color: color of name in logs</p>
+                    <p><i>returns: log function with already set named parameter</i></p>
                 </div>
             </details>
         
