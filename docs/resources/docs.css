@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap');
+
+html {
+    background-color: #111;
+    color: white;
+    font-family: Red Hat Display;
+}
+#sidebar {
+    background-color: #222;
+    left: 0;
+    position: fixed;
+    width: 13em;
+    max-width: 13em;
+    height: 100%;
+    padding: .5em .5em .5em 2em;
+    display: inline;
+}
+#sidebar a {
+    color: white;
+    text-decoration: none;
+}
+#sidebar a:hover {
+    color: #aaf;
+    text-decoration: underline;
+}
+#content {
+    position: absolute;
+    display: inline;
+    left: 16em;
+    right: 0;
+    top: 0;
+    height: 100%;
+    
+    padding: 1em 2em;
+}
+
+ul {
+    padding-left: 1em;
+}
+li {
+    list-style-position: outside;
+    list-style-type: circle;
+}
+
+
+code {
+    font-family: Fira Code;
+}
+
+h1, h2, .h2, h3, h4, h5, h6 {
+    width: 100%;
+}
+h1 {
+    padding-bottom: 1em;
+    border-bottom: 1px solid #ffff;
+}
+#content h4 {
+    font-style: italic;
+    margin-left: -.5em;
+}
+h2, .h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-top: 1em;
+    border-top: 1px solid #fff8;
+    padding-bottom: .5em;
+    border-bottom: 1px dashed #fff8;
+}
+#content p {
+    margin-left: 1em;
+}
+h1 + h2, h1 + .h2 {
+    border-top: none;
+}
+h3 {
+    padding-top: 1em;
+    border-top: 1px solid #fff8;
+}
+h2 + h3, .h2 + h3 {
+    border-top: none;
+}
+details > div > p {
+    color: #aaa;
+}
+details > div > p > i {
+    color: #ffa;
+}
+details > div > p.desc > i {
+    color: #aaa;
+}
+pre {
+    
+}

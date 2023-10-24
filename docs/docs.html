@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prototyper Documentation</title>
+        <link rel="stylesheet" href="./resources/docs.css">
+        <script src="./resources/index.js" defer></script>
+    </head>
+  
+    <body>
+        <!-- sidebar for navigation -->
+        <div id="sidebar">
+            <h2>⚙️ Prototyper</h2>
+            <h3>Components</h3>
+            <ul>
+                <li> app
+                    <ul>
+                        <li><a href="#app.http_settings">app.http_settings</a></li>
+                        <li><a href="#app.http_views">app.http_views</a></li>
+                    </ul>
+                </li>
+                <li><a href="#http_cors">http_cors</a></li>
+                <li><a href="#http_handler">http_handler</a></li>
+                <li><a href="#http_secure">http_secure</a></li>
+                <li><a href="#http_server">http_server</a></li>
+                <li><a href="#http_utils">http_utils</a></li>
+                <li><a href="#logger">logger</a></li>
+            </ul>
+        </div>
+        
+        <!-- actual documentation -->
+        <div id="content">
+        
+            <h1>⚙️ Prototyper</h1>
+            
+            <details open>
+            <summary id="app.http_settings" class="h2">app.http_settings</summary>
+                <div>
+                </div>
+            </details>
+            
+            <details open>
+                <summary id="app.http_views" class="h2">app.http_views</summary>
+                <div>
+                </div>
+            </details>
+            
+            <details open>
+                <summary id="http_cors" class="h2">http_cors</summary>
+                <div>
+                    <h4>get_headers(request:JSONRequest):</h4>
+                    <p>request: request to return headers for</p>
+                    <p><i>returns: dict of cors response headers</i></p>
+                </div>
+            </details>
+            
+            <details open>
+            <summary id="http_handler" class="h2">http_handler</summary>
+                <div>
+                </div>
+            </details>
+
+            <details open>
+            <summary id="http_secure" class="h2">http_secure</summary>
+                <div>
+                </div>
+            </details>
+
+            <details open>
+            <summary id="http_server" class="h2">http_server</summary>
+                <div>
+                </div>
+            </details>
+
+            <details open>
+            <summary id="http_utils" class="h2">http_utils</summary>
+                <div>
+                    <h3>class JSONRequest:</h3>
+                    
+                    <h4>__init__(self, method:str, path:str, headers:dict, body:str, get:str='') -> dict</h4>
+                    <p>method: request method</p>
+                    <p>path: requested path</p>
+                    <p>headers`: headers of request</p>
+                    <p>body: body of request</p>
+                    <p>get: get parameters of request</p>
+                    <p><i>returns: cors response headers</i></p>
+                    
+                    <h4>@classmethod from_str(cls, str:str) -> JSONRequest</h4>
+                    <p>str: http request as string</p>
+                    <p><i>returns: json http request</i></p>
+                    
+                    <h4>get(self, key:any) -> any, None</h4>
+                    <p>key: get parameter name</p>
+                    <p><i>returns: value of get parameter if any, otherwise None</i></p>
+                    
+                    <h4>post(self, key:any) -> any, None</h4>
+                    <p>key: post parameter name</p>
+                    <p><i>returns: value of post parameter if any, otherwise None</i></p>
+                    
+                    <h4>headers(self, key:any) -> any, None</h4>
+                    <p>key: header parameter name</p>
+                    <p><i>returns: value of header if any, otherwise None</i></p>
+                    
+                    <h3>class JSONResponse:</h3>
+                    
+                    <h4>__init__(self, body:str, headers:dict={}, status:int=200) -> JSONResponse</h4>
+                    <p>body: response body</p>
+                    <p>headers`: response headers</p>
+                    <p>status: response status code</p>
+                    <p><i>returns: json http response</i></p>
+                    
+                    <h4>set_headers(self, headers:dict) -> None</h4>
+                    <p>headers: headers to overwrite</p>
+                    <p class="desc"><i>Overwrites any response headers passed to the function.</i></p>
+                    <p><i>returns: None</i></p>
+                    
+                    <h4>render(self) -> str</h4>
+                    <p><i>Renders the request into a valid http response as a string.</i></p>
+                    <p><i>returns: rendered response</i></p>
+                    
+                </div>
+            </details>
+
+            <details open>
+            <summary id="logger" class="h2">logger</summary>
+                <div>
+                </div>
+            </details>
+        
+        </div>
+    </body>
+</html>
