@@ -10,24 +10,28 @@ html {
     background-color: #222;
     left: 0;
     position: fixed;
-    width: 13em;
-    max-width: 13em;
+    width: 16em;
+    max-width: 16em;
     height: 100%;
-    padding: .5em .5em .5em 2em;
+    padding: .5em 2em .5em;
     display: inline;
 }
-#sidebar a {
+a {
     color: white;
     text-decoration: none;
+    font-style: italic;
 }
-#sidebar a:hover {
+a:hover {
     color: #aaf;
     text-decoration: underline;
+}
+#sidebar a {
+    font-style: normal;
 }
 #content {
     position: absolute;
     display: inline;
-    left: 16em;
+    left: 20em;
     right: 0;
     top: 0;
     height: 100%;
@@ -47,9 +51,11 @@ li {
 code {
     font-family: Fira Code;
 }
-
 h1, h2, .h2, h3, h4, h5, h6 {
     width: 100%;
+}
+h4 {
+    font-weight: bolder;
 }
 h1 {
     padding-bottom: 1em;
@@ -65,20 +71,26 @@ h2, .h2 {
     padding-top: 1em;
     border-top: 1px solid #fff8;
     padding-bottom: .5em;
+}
+details[open] > summary.h2 {
     border-bottom: 1px dashed #fff8;
 }
 #content p {
     margin-left: 1em;
 }
-h1 + h2, h1 + .h2 {
+#content ul {
+    margin-left: 2em;
+}
+h1 + details > summary.h2 {
     border-top: none;
 }
-he {
-    border: none;
-}
-p + h3 {
+h3 {
     padding-top: 1em;
     border-top: 1px solid #fff8;
+}
+
+details[open] > div > h3:first-child {
+    border-top: none;
 }
 details > div > p {
     color: #aaa;
@@ -96,6 +108,9 @@ details > div > p.desc {
 details > div > p.desc + p.desc {
     margin-top: -1em;
 }
-pre {
-    
+pre, code {
+    padding: 0 2em !important;
+    border-radius: .3em !important;
+    margin-left: 1em !important;
+    margin-top: 1em !important;
 }

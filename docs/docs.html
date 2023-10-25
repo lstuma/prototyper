@@ -3,15 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./resources/prism.css" rel="stylesheet" />
         <title>Prototyper Documentation</title>
+        <link rel="icon" type="image/x-icon" href="./resources/favicon.png">
+    	<script src="./resources/prism.js"></script>
         <link rel="stylesheet" href="./resources/docs.css">
-        <script src="./resources/index.js" defer></script>
     </head>
   
     <body>
         <!-- sidebar for navigation -->
         <div id="sidebar">
             <h2>⚙️ Prototyper</h2>
+            <h3>Developing with Prototyper</h3>
+            <ul>
+                <li><a href="#getting-started">Getting started</a></li>
+            </ul>
             <h3>Components</h3>
             <ul>
                 <li> app
@@ -35,9 +41,126 @@
             <h1>⚙️ Prototyper</h1>
             
             <details open>
+                <summary id="getting-started" class="h2">Getting Started</summary>
+                <div>
+                    <h3>Configuring http_settings</h3>
+                    <h4>Callbacks</h4>
+                    <p class="desc">
+                        The http_settings.errors and http_settings.urls contains callbacks which will be called by http_handler when a url is requested or an error occurs.
+                        All of them should return a valid <a href='#http_utils.JSONResponse'>JSONResponse</a> object, which will then be sent to the client by the http_handler.
+                    </p>
+                    <p class="desc"><br/>
+                        The callbacks should follow the structure:
+                    </p>
+                    <pre><code class="language-python">
+def callback(request: JSONRequest):
+    # do something
+    return JSONRequest(body={})
+                    </code></pre>
+                    <p class="desc"><br/>
+                        The http_settings.urls dict contains urls and their respecitve callbacks.
+                    </p>
+                    <pre><code class="language-python">
+urls = {
+    '/': views.welcome,
+    '/api/login': views.login,
+    '/api/signup': views.signup,
+    '/api/comment': views.comment,
+}
+                        </code></pre>
+                    <p class="desc"><br/>
+                        The http_settings.errors dict contains error codes and their respecitve callbacks.
+                        If an error occurse the http_handler will call the callback and send the returned response to the client.
+                        For example, if a resource is requested but no matching url is found, the http_handler will call the callback http_settings.errors[404].<br/>
+                        Currently supported error callbacks:
+                    </p>
+                    <ul>
+                        <li>404: resource not found</li>
+                    </ul>
+
+                    <pre><code class="language-python">
+errors = {
+    404: views.not_found,
+}
+                        </code></pre>
+
+                    <h4>Logging</h4>
+                    <p class="desc">
+                        The standard logger supports 7 different types of messages:
+                    </p>
+                    <ul>
+                        <li>0: error</li>
+                        <li>1: warning</li>
+                        <li>2: success</li>
+                        <li>3: info</li>
+                        <li>4: verbose</li>
+                        <li>5: very verbose</li>
+                        <li>6: debug</li>
+                    </ul>
+                    <p class="desc">
+                        Any messages that have a higher verbosity than the current set verbosity level will not be logged.
+                        You can change the verbosity level by setting the http_settings.VERBOSITY parameter. (recommended: 3 or 4)
+                    </p>
+                    <pre><code class="language-python">
+# VERBOSITY (0-6)
+VERBOSITY = 3
+                    </code></pre>
+
+                    <h4>HTTPS</h4>
+                    <p class="desc">
+                        To configure HTTPS you need to set the http_settings.CERT_PATH and http_settings.PRIVKEY_PATH parameters.
+                        Optionally if your private key is encrypted, you may set the http_settings.PRIVKEY_DECRYPT_PASSWD parameter.
+                        If it is not set and a password is required to decrypt the file, you will be prompted to enter it.
+                    </p>
+                    <pre><code class="language-python">
+# PROTOCL HTTP / HTTPS
+USE_HTTPS = True
+CERT_PATH = '/path/to/your/cert/ca.pem'
+PRIVKEY_PATH = '/path/to/your/private/key/privkey.pem'
+PRIVKEY_DECRYPT_PASSWD = ''
+                    </code></pre>
+
+                    <h4>Allowed hosts and CORS</h4>
+                    <p class="desc">
+                        http_settings.ALLOWED_HOSTS contains a list of hostnames that the server is allowed to be accessed with.
+                        If the HTTP Host Header is not set to any of the allowed hostsnames, the request will be blocked.<br/>
+                        The http_settings.ALLOWED_ORIGINS parameter should be set to a list of allowed origins for cross-site-requests.
+                        Any cross-site-requests form unknown origins will be blocked.<br/>
+                        If http_settings.ALLOW_CREDENTIALS parameter is set to True cross-site-requests are allowed to contain credentials.
+                    </p>
+                    <pre><code class="language-python">
+# ALLOWED_HOSTS
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
+# CORS
+ALLOWED_ORIGINS = ['http://localhost']
+ALLOW_CREDENTIALS = False
+                    </code></pre>
+
+                    <h4>Address and port</h4>
+                    <p class="desc">
+                        The http_settings.ADDRESS parameter should be either set to a valid IPv4 address of the server or be left as an empty allowing requests to any of the servers interfaces.<br/>
+                        Setting http_settings.PORT parameter will change the port the server will listen on for requests.
+                    </p>
+                    <pre><code class="language-python">
+# ADDRESS and PORT (empty address opens on all interfaces)
+ADDRESS = ""
+PORT = 80
+                    </code></pre>
+
+                    <h3>Running the server</h3>
+                    To start the server simply run the http_server.py file:
+                    <pre><code class="language-bash">
+$ python3 http_server.py
+                    </code></pre>
+
+                </div>
+            </details>
+
+            <details open>
             <summary id="app.http_settings" class="h2">app.http_settings</summary>
                 <div>
-                    <p class="desc">Change settings here to fit your need. </p>
+                    <p class="desc">Change the settings in http_settings to your needs</p>
                 </div>
             </details>
             
@@ -106,7 +229,6 @@
             <details open>
             <summary id="http_utils" class="h2">http_utils</summary>
                 <div>
-                    <p></p>
 
                     <h3>class JSONRequest:</h3>
                     
