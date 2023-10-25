@@ -49,7 +49,7 @@ def run_server():
 if __name__ == '__main__':
     global sock
     
-    log(3, 'configuring settings')
+    log(3, 'loading settings')
 
     # configure local
     global allowed_hosts, address, handle_connection, use_https, certpath, privkeypath, privkey_password, https_hostname
@@ -67,17 +67,17 @@ if __name__ == '__main__':
 
     # log configuration settings
     log(2,
-        "continueing with settings:\n"+\
-        "\tVERBOSITY: \033[;32m" + str(logger.verbosity) + "\033[0;0m\n" +\
-        "\tUSE HTTPS: " + ('\033[;32mTRUE' if use_https else '\033[;31mFALSE') + "\033[0;0m\n" +\
-        "\t - CERT PATH: \033[;32m" + (cert_path if cert_path else '\033[;31mNONE') + "\033[0;0m\n" +\
-        "\t - PRIVKEY PATH: \033[;32m" + (privkey_path if privkey_path else '\033[;31mNONE') + "\033[0;0m\n" +\
-        "\t - PRIVKEY PASSWD POLICY: \033[;32m" + ('\033[;32mPROVIDED' if privkey_password else '\033[;31mASK') + "\033[0;0m\n" +\
-        "\tALLOWED HOSTS: \033[;32m" + str(allowed_hosts) + "\033[0;0m\n" +\
-        "\tCORS ALLOWED ORIGINS: \033[;32m" + str(http_settings.ALLOWED_ORIGINS) + "\033[0;0m\n" +\
-        "\tCORS ALLOW CREDENTIALS: " + ('\033[;32mTRUE' if str(http_settings.ALLOW_CREDENTIALS) else '\033[;31mFALSE') + "\033[0;0m\n" +\
-        "\tADDRESS: \033[;32m" + (address[0] if address[0] else 'ANY') + "\033[0;0m\n" +\
-        "\tPORT: \033[;32m" + str(address[1]) + "\033[0;0m\n"
+        "using settings:\n"+\
+        "     VERBOSITY: \033[;32m" + str(logger.verbosity) + "\033[0;0m\n" +\
+        "     USE HTTPS: " + ('\033[;32mTRUE' if use_https else '\033[;31mFALSE') + "\033[0;0m\n" +\
+        "     ├─ CERT PATH: \033[;32m" + (cert_path if cert_path else '\033[;31mNONE') + "\033[0;0m\n" +\
+        "     ├─ PRIVKEY PATH: \033[;32m" + (privkey_path if privkey_path else '\033[;31mNONE') + "\033[0;0m\n" +\
+        "     └─ PRIVKEY PASSWD POLICY: \033[;32m" + ('\033[;32mPROVIDED' if privkey_password else '\033[;31mASK') + "\033[0;0m\n" +\
+        "     ALLOWED HOSTS: \033[;32m" + str(allowed_hosts) + "\033[0;0m\n" +\
+        "     CORS ALLOWED ORIGINS: \033[;32m" + str(http_settings.ALLOWED_ORIGINS) + "\033[0;0m\n" +\
+        "     CORS ALLOW CREDENTIALS: " + ('\033[;32mTRUE' if str(http_settings.ALLOW_CREDENTIALS) else '\033[;31mFALSE') + "\033[0;0m\n" +\
+        "     ADDRESS: \033[;32m" + (address[0] if address[0] else 'ANY') + "\033[0;0m\n" +\
+        "     PORT: \033[;32m" + str(address[1]) + "\033[0;0m"
     )
 
     
