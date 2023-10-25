@@ -2,6 +2,7 @@ import app.http_views as views
 
 # URLS
 urls = {
+    '/': views.welcome,
 }
 
 # ERROR PAGES etc.
@@ -10,7 +11,7 @@ errors = {
 }
 
 # VERBOSITY (0-6)
-VERBOSITY = 5
+VERBOSITY = 3
 
 # PROTOCL HTTP / HTTPS
 USE_HTTPS = False
