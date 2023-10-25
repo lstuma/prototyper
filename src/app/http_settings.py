@@ -15,8 +15,8 @@ VERBOSITY = 3
 
 # PROTOCL HTTP / HTTPS
 USE_HTTPS = False
-CERT_PATH = '/path/to/ca.pem'
-PRIVKEY_PATH = '/path/to/privkey.pem'
+CERT_PATH = ''
+PRIVKEY_PATH = ''
 PRIVKEY_DECRYPT_PASSWD = ''
 
 # ALLOWED_HOSTS
