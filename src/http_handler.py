@@ -45,7 +45,7 @@ def handle_request(connection, client_address):
             log(5, f'could not find matching path for {json_request.path}')
 
             # get and render 404 response
-            response = http_settings.errors[404](request).render()
+            response = http_settings.errors[404](json_request).render()
             
             connection.sendall(response)
             log(2, f'sent response to {client_address[0]}:{client_address[1]}')
