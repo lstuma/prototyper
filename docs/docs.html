@@ -51,9 +51,9 @@
             <details>
                 <summary id="http_cors" class="h2">http_cors</summary>
                 <div>
-                    <h4>get_headers(request:JSONRequest):</h4>
+                    <h4>get_headers(request:JSONRequest) -> dict</h4>
                     <p>request: request to return headers for</p>
-                    <p><i>returns: dict of cors response headers</i></p>
+                    <p><i>returns: cors response headers</i></p>
                 </div>
             </details>
             
@@ -93,7 +93,13 @@
             <details>
             <summary id="http_server" class="h2">http_server</summary>
                 <div>
-                    
+                    <h4>run_server() -> None</h4>
+                    <p class="desc"><i>
+                        Configures a few settings set in http_settings in other modules,
+                        Then Starts server and secures sockets if http_settings.USE_HTTPS is set to True.
+                        Then actively listens for connections and forwards them to http_handler.handleconnection().
+                    </i></p>
+                    <p><i>returns: None</i></p>
                 </div>
             </details>
 
