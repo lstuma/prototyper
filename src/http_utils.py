@@ -39,7 +39,7 @@ class JSONRequest:
         # parse url
         path = str[len(method) + 1:str.find('HTTP/1.')].split('?') + ['']
         get_params = path[1]
-        path = path[0]
+        path = path[0].strip()
         return JSONRequest(method=method, path=path, headers=headers, body=body, get=get_params)
 
     def gen_method_array(self):
