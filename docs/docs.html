@@ -37,16 +37,18 @@
             <details open>
             <summary id="app.http_settings" class="h2">app.http_settings</summary>
                 <div>
+                    <p class="desc">Change settings here to fit your need. </p>
                 </div>
             </details>
             
             <details open>
                 <summary id="app.http_views" class="h2">app.http_views</summary>
                 <div>
+                    <p class="desc">Place your callbacks for views and errors here.</p>
                 </div>
             </details>
             
-            <details open>
+            <details>
                 <summary id="http_cors" class="h2">http_cors</summary>
                 <div>
                     <h4>get_headers(request:JSONRequest):</h4>
@@ -55,13 +57,23 @@
                 </div>
             </details>
             
-            <details open>
-            <summary id="http_handler" class="h2">http_handler</summary>
+            <details>
+                <summary id="http_handler" class="h2">http_handler</summary>
                 <div>
+                    <h4>handle_request(connection:socket.socket, client_address:tuple) -> None</h4>
+                    <p>connection: client socket of connection</p>
+                    <p>client_address: address of connecting client (address:str, port:int)</p>
+                    <p class="desc"><i>Determines response for request and then sends it.</i></p>
+                    <p class="desc"><i>
+                        Uses http_settings.urls to find matching views and then calls them.
+                        If no view is found, http_settings.error[404] is called.
+                        The appropriate response is then sent to the client.
+                    </i></p>
+                    <p><i>returns: None</i></p>
                 </div>
             </details>
 
-            <details open>
+            <details>
             <summary id="http_secure" class="h2">http_secure</summary>
                 <div>
                     <h4>make_secure(sock:socket.socket, cert:path:str, privatekey_path:str, password:str=None) -> socket.socket, None</h4>
@@ -78,7 +90,7 @@
                 </div>
             </details>
 
-            <details open>
+            <details>
             <summary id="http_server" class="h2">http_server</summary>
                 <div>
                     
@@ -88,6 +100,8 @@
             <details open>
             <summary id="http_utils" class="h2">http_utils</summary>
                 <div>
+                    <p></p>
+
                     <h3>class JSONRequest:</h3>
                     
                     <h4>__init__(self, method:str, path:str, headers:dict, body:str, get:str='') -> dict</h4>

@@ -55,7 +55,7 @@ h1 {
     padding-bottom: 1em;
     border-bottom: 1px solid #ffff;
 }
-#content h4 {
+#content p {
     font-style: italic;
     margin-left: -.5em;
 }
@@ -73,12 +73,12 @@ h2, .h2 {
 h1 + h2, h1 + .h2 {
     border-top: none;
 }
-h3 {
+he {
+    border: none;
+}
+p + h3 {
     padding-top: 1em;
     border-top: 1px solid #fff8;
-}
-h2 + h3, .h2 + h3 {
-    border-top: none;
 }
 details > div > p {
     color: #aaa;
@@ -88,6 +88,13 @@ details > div > p > i {
 }
 details > div > p.desc > i {
     color: #aaa;
+}
+details > div > p.desc {
+    color: #fff;
+    font-style: normal !important;
+}
+details > div > p.desc + p.desc {
+    margin-top: -1em;
 }
 pre {
     
